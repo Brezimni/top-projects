@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP Project: Rock Paper Scissors</title>
+</head>
+<body>
+    <p>
+        Check console log for now.
+    </p>
+
+<script>
+    const getComputerChoice = function() {
+        return ['rock', 'paper', 'scissors'][Math.floor(Math.random()*3)]
+    }
+    let getPlayerChoice = prompt('Rock? Paper? Scissors?').toLowerCase();
+
+    function playRound(playerChoice, computerChoice) {
+        if(['rock', 'paper', 'scissors'].find(validChoices => validChoices === playerChoice) === undefined) {
+            return 'Enter valid option.';
+        } else if (playerChoice === 'paper') {
+            return computerChoice === 'rock' ? "You Win! Paper beats Rock" : computerChoice === 'scissors' ? 'You Lose! Scissors beats Paper' : "It's a draw!";
+        } else if (playerChoice === 'rock') {
+            return computerChoice === 'scissors' ? "You Win! Rock beats Scissors" : computerChoice === 'paper' ? 'You Lose! Paper beats Rock' : "It's a draw!";
+        } else {
+            return computerChoice === 'paper' ? "You Win! Scissors beats Paper" : computerChoice === 'scissors' ? 'You Lose! Rock beats Scissors' : "It's a draw!";
+        }
+    }
+
+    console.log(playRound(getPlayerChoice, getComputerChoice()));
+
+</script>
+</body>
+</html>
