@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TOP Project: Rock Paper Scissors</title>
+    <style>
+        body {
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            color: #000000;
+        }
+        #container {
+            background-color: #F57D1F;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        #display {
+            background-color: #F72798;
+            height: 220px;
+            width: 450px;
+            padding: 20px;
+        }
+        #score-board {
+            display: flex;
+            justify-content: space-around;
+        }
+        .score {
+            outline: none;
+            background-color: transparent;
+            font-size: 2em;
+            font-weight: bold;
+            border: none;
+            display: flex;
+            max-width:100px;
+        }
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        #buttons button{
+            background-color: #EBF400;
+            outline-color: transparent;
+            padding: 8px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #multiplier {  
+            background-color: #EBF400;
+            max-width: 60px;
+            padding: 8px;
+            border-radius: 8px;
+            outline: transparent;
+            border: transparent;
+        }
+        #game-result {
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 2em;
+            font-weight: 900;
+        }
+        #game-log {
+            list-style: ">>> ";
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1 id="title">
+            Rock-Paper-Scissors
+        </h1>
+        <div id="display">
+            <div id="score-board">
+                <span>
+                    <label for="win">Wins:</label>
+                    <input type="text" name="win" id="win" value="0" class="score" readonly>
+                </span>
+                <span>
+                    <label for="loss">Losses:</label>
+                    <input type="text" name="loss" id="loss" value="0" class="score" readonly>
+                </span>
+                <span>
+                    <label for="draw">Draws:</label>
+                    <input type="text" name="draw" id="draw" value="0" class="score" readonly>
+                </span>
+            </div>
+            <hr>
+            <div class="game-log">
+                <div id="game-result">Let's start!</div>
+                <ul id="game-log">
+                </ul>
+            </div>
+        </div>
+        <div id="controls">
+            <div id="buttons">
+                <button value="rock" type="button" onclick="multiply(event.target.value)">
+                    Rock    
+                </button>
+                <button value="paper" type="button" onclick="multiply(event.target.value)">
+                    Paper
+                </button>
+                <button value="scissors" type="button" onclick="multiply(event.target.value)">
+                    Scissors
+                </button>
+            </div>
+            <div>
+                <input type="number" value="1" name="multiplier" id="multiplier" min="1" max="5">
+            </div>
+        </div>
+    </div>
+
+<script>
+    const getComputerChoice = function() {
+        return ['rock', 'paper', 'scissors'][Math.floor(Math.random()*3)]
+    }
+
+    const changeScore = function(result) {
+        const scoreCount = [document.getElementById('win'), document.getElementById('loss'), document.getElementById('draw')];
+        return scoreCount[result].value = parseInt(scoreCount[result].value) + 1;
+    }
+
+    const announceResult = function(result, explanation) {
+        const results = ['You win!', 'You lose!', "It's a draw!"];
+        const announcement = document.getElementById('game-result');
+        const gameLog = document.getElementById('game-log');
+
+        announcement.innerText = results[result];
+        if(gameLog.childElementCount >= 5) {gameLog.children[0].remove()};
+        const newLi = document.createElement('li');
+        newLi.textContent = explanation;
+        gameLog.appendChild(newLi);
+    }
+
+    function playRound(playerChoice) {
+        const computerChoice = getComputerChoice();
+        if (playerChoice === computerChoice) { announceResult(2, `Both players picked ${playerChoice}!`); changeScore(2);
+        } else if(playerChoice === 'rock') {
+            if(computerChoice === 'scissors') {
+                announceResult(0, 'Rock beats scissors!'); changeScore(0);
+            } else {announceResult(1, 'Paper beats rock!'); changeScore(1);}
+        } else if(playerChoice === 'paper') {
+            if(computerChoice === 'rock') {
+                announceResult(0, 'Paper beats rock!'); changeScore(0);
+            } else {announceResult(1, 'Scissors beat paper!'); changeScore(1);}
+        } else {
+            if(computerChoice === 'paper') {
+                announceResult(0, 'Scissors beat paper!'); changeScore(0);
+            } else {announceResult(1, 'Paper beats rock!'); changeScore(1);}
+        }
+    }
+
+    function multiply(choice) {
+        const gameMultiplier = document.getElementById('multiplier');
+        if(parseInt(gameMultiplier.value) > 5 || parseInt(gameMultiplier.value) < 1 || typeof parseInt(gameMultiplier.value) !== 'number') {parseInt(gameMultiplier.value) = 1}
+        for(let i = 0; i < parseInt(gameMultiplier.value); i++) {
+            playRound(choice);
+        }
+    }
+</script>
+</body>
+</html>
