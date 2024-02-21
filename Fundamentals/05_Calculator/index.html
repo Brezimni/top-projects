@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Oding Project: Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <script src="main.js" defer></script>
+</head>
+<body>
+    <main id="calculator">
+        <div id="info">
+            <span id="red"></span>
+            <span id="yellow"></span>
+            <span id="green"></span>
+        </div>
+        <div id="display">
+            <div id="workspace"></div>
+            <div id="result"></div>
+        </div>
+        <div id="keypad">
+            <ul>
+                <li class="keys" onclick="handleClick('plusMinus')"><span>±</span></li>
+                <li class="keys" onclick="handleClick('clear')"><span>C</span></li>
+                <li class="keys" onclick="handleClick('delete')">
+                    <span class="material-symbols-outlined">
+                        backspace
+                    </span>
+                </li>
+                <li class="keys operators" onclick="handleClick('addOperator', '÷')"><span>÷</span></li>
+                <li class="keys" onclick="handleClick(7)"><span>7</span></li>
+                <li class="keys" onclick="handleClick(8)"><span>8</span></li>
+                <li class="keys" onclick="handleClick(9)"><span>9</span></li>
+                <li class="keys operators" onclick="handleClick('addOperator', '×')">
+                    <span>×</span>
+                </li>
+                <li class="keys" onclick="handleClick(4)"><span>4</span></li>
+                <li class="keys" onclick="handleClick(5)"><span>5</span></li>
+                <li class="keys" onclick="handleClick(6)"><span>6</span></li>
+                <li class="keys operators" onclick="handleClick('addOperator', '-')">
+                    <span>-</span>
+                </li>
+                <li class="keys" onclick="handleClick(1)"><span>1</span></li>
+                <li class="keys" onclick="handleClick(2)"><span>2</span></li>
+                <li class="keys" onclick="handleClick(3)"><span>3</span></li>
+                <li class="keys operators" onclick="handleClick('addOperator', '+')">
+                    <span>+</span>
+                </li>
+                <li class="keys" onclick="handleClick(0)"><span>0</span></li>
+                <li class="keys operators" onclick="handleClick('.')">
+                    <span>.</span>
+                </li>
+                <li class="keys large-key operators" onclick="handleClick('operate')">
+                    <span>=</span>
+                </li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

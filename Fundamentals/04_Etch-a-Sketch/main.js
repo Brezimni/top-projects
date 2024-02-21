@@ -4,7 +4,7 @@ function randomizeColor(targetTile) {
     let backgroundColor = getComputedStyle(targetTile).getPropertyValue('background-color');
     let colorOpacity = getComputedStyle(targetTile).getPropertyValue('opacity');
     if(backgroundColor === 'rgb(255, 255, 255)') {
-        let randomColor = `rgba(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`;
+        let randomColor = `rgb(${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)}, ${Math.floor(Math.random()*255)})`;
         targetTile.style.backgroundColor = randomColor;
         targetTile.style.opacity = 0.1;
     } else if(colorOpacity < 1) {
