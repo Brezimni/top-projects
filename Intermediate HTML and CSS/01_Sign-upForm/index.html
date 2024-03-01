@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <aside onclick="switchModes()">
+        <div id="hero">
+            <img id="odin-logo" src="assets/odin-logo-w.png" alt="odin-logo">
+            <h1>Odin</h1>
+        </div>
+        <p id="credit">Photo by <a href="https://unsplash.com/@haliewestphoto" id="img-author" target="_blank">Halie West</a> on <a href="https://unsplash.com/" target="_blank">Unsplash</a></p>
+    </aside>
+    <main>
+        <form action="#" onsubmit="return checkPasswords()" method="get">            
+            <section>
+                <div>
+                    <p>This is not a real service! You know you need something like this in your life to help you realize your deepest dreams.</p>
+                    <p>Sign up <em>now</em> to get started.</p>
+                </div>
+                <p>You <em>know</em> you want to.</p>
+            </section>
+            <section>
+                <fieldset>
+                    <legend><h2>Let's do this</h2></legend>
+                    <ul class="input-list">
+                        <li>
+                            <label class="labels" for="first-name">First Name</label>
+                            <input type="text" id="first-name">
+                        </li>
+                        <li>
+                            <label class="labels" for="last-name">Last Name</label>
+                            <input type="text" id="last-name">
+                        </li>
+                        <li>
+                            <label class="labels" for="email">E-mail</label>
+                            <input type="email" id="email">
+                        </li>
+                        <li>
+                            <label class="labels" for="tel">Phone number</label>
+                            <input type="tel" id="tel">
+                        </li>
+                        <li>
+                            <label class="labels" for="password">Password</label>
+                            <input type="password" id="password">
+                            <p id="error-msg">*Passwords do not match</p>
+                        </li>
+                        <li>
+                            <label class="labels" for="password-confirm">Confirm password</label>
+                            <input type="password" id="password-confirm">
+                        </li>
+                    </ul>
+                   </fieldset>
+            </section>
+            <section>
+                <button type="submit" class="btn">Create Account</button>
+                <p id="info">Already have an account? <a href="#" id="login-link">Log in</a></p>
+            </section>
+        </form>
+    </main>
+</body>
+</html>

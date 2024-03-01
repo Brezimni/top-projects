@@ -1,0 +1,206 @@
+@font-face {
+    font-family: 'odin-nord';
+    src: url(assets/Norse-Bold.otf);
+}
+
+:root {
+    --color-bg-main: #f3f3f3;
+    --color-bg-form: #fff;
+    --color-form-text: #444;
+    --color-form-elements: #dbdbdb;
+    --color-cta: #596D48;
+    --color-danger: darkred;
+    --bg-image-url: url(assets/bg-light.jpg);
+    --hero-shade: rgba(0, 0, 0, .40);
+    --hero-text: white;
+}
+
+:root.dark-mode {
+    --color-bg-main: #f3f3f3;
+    --color-bg-form: #fff;
+    --color-form-text: #444;
+    --color-form-elements: #dbdbdb;
+    --color-cta: steelblue;
+    --color-danger: darkred;
+    --bg-image-url: url(assets/bg-dark.jpg);
+    --hero-shade: rgba(255, 255, 255, .30);
+    --hero-text: black;
+}
+
+*, *::after, *::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    font-size: 18px;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    display: flex;
+    min-height: 100%;
+}
+
+aside {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 350px;
+    flex: 1 1 50vw;
+    background-image: var(--bg-image-url);
+    background-size: cover;
+    text-align: center;
+    user-select: none;
+}
+
+#hero {
+    background-color: var(--hero-shade);
+    margin: 25vh 0 0 0;
+    font-family: 'odin-nord', sans-serif;
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--hero-text);
+}
+    #hero img {
+        height: 5rem;
+        width: auto;
+    }
+    #hero h1 {
+        margin: 20px 0;
+    }
+
+#credit {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: white;
+}
+    #credit a {
+        color: white;
+        font-style: italic;
+    }
+
+    main section {
+        padding:  20px 35px;
+        background-color: var(--color-bg-main);
+    }
+    main section:first-child, main section:last-child {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    main section:first-child {
+        justify-content: flex-end;
+        font-size: 1.1rem;
+    }
+        main section:first-child > * {
+            width: 600px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+    main section:nth-child(2) {
+        background-color: white;
+        box-shadow: 2px 4px 6px #dbdbdb;
+    }
+    main form {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    }
+
+    main form > * {
+        flex: 1 1 33%;
+        color: var(--color-form-text);
+        }    
+        main form fieldset {
+            border: none;
+        }  
+
+.input-list {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+}    
+    .input-list li {
+        display: flex;
+        flex-direction: column;
+        margin-right: 50px;
+        margin-top: 30px;
+        width: max(200px, 35%);
+    }
+        .input-list li .labels {
+            font-size: .7rem;
+            letter-spacing: 2px;
+            text-transform: uppercase !important;
+        }
+        .input-list li input {
+            font-size: 1rem;
+            padding: 5px;
+            border-radius: 3px;
+            border: transparent;
+            outline: 1px solid var(--color-form-elements);
+        }
+        .input-list li input.error, input:invalid {
+            outline: 1px solid var(--color-danger);
+        }        
+        .input-list li input:focus {
+            outline: 1px solid var(--color-cta);
+            box-shadow: 1px 1px 4px #777;
+        }
+        .input-list li #error-msg {
+            color: var(--color-danger);
+            font-size: .65rem;
+            visibility: hidden;
+        }
+
+.btn {
+    background-color: var(--color-cta);
+    color: var(--color-bg-form);
+    font-weight: bold;
+    border: transparent;
+    border-radius: 6px;
+    font-size: .85rem;
+    padding: 14px 50px;
+    margin: 10px 0 30px 0;
+    cursor: pointer;
+}
+#info, .labels {
+    font-weight: 600;
+}
+#login-link {
+    color: var(--color-cta);
+    text-decoration: none;
+
+    :visited {
+        font-style: italic;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    body {
+        flex-direction: column;
+    }
+    aside {
+        flex: 0 0 300px;
+        justify-content: center;
+    }
+    #hero {
+        margin: 0;
+    }
+    main {
+        flex: 1;
+    }
+    main section:first-child > * {
+        width: auto;
+    }
+    .input-list li {
+        width: 100%;
+        margin-right: 0;
+    }
+    .input-list li:nth-child(6) {
+        margin-top: calc(30px - 1rem);
+    }
+}
