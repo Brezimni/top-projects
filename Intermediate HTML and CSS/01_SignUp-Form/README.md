@@ -1,6 +1,6 @@
 # Project 01 - Sign-up Form
 
-![Screenshoot of the finnished project.](/assets/project-screenshot.jpg)
+![Screenshoot of the finnished project.](assets/project-screenshot.jpg)
 
 ## Basic functionality
 
