@@ -1,0 +1,295 @@
+*, *::after, *::before {
+     box-sizing: border-box;
+     margin: 0;
+     padding: 0;
+}
+
+:root {
+    /*Colors*/
+    font-size: 18px;
+    --background-color: #e4e4e7;
+    --primary-color: #818cf8;
+    --highlight-color: #BADA55;
+    --gap-padding: 25px;
+    --card-shadow: 2px 4px 6px #bbb;
+}
+
+body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-template-rows: min-content 1fr;
+    height: 100vh;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#header {
+    background-color: #ffffff;
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    padding: var(--gap-padding) calc(var(--gap-padding)*2);
+    position: relative;
+    box-shadow: var(--card-shadow);
+    row-gap: var(--gap-padding);
+}
+
+#header>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#header #notifications {
+    display: flex;
+    gap: var(--gap-padding);
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 700;
+}
+
+#header svg {
+    height: 2rem;
+}
+
+.header_user_pill {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 30px;
+}
+
+#header #search {
+    margin-left: var(--gap-padding);
+    width: max(300px, 100%);
+    height: 2rem;
+    padding: 10px;
+    background-color: var(--background-color);
+    border: transparent;
+    border-radius: 25px;
+}
+
+#header #user {
+    font-size: 1.2rem;
+    font-weight: 700;
+    display: flex;
+    gap: var(--gap-padding);
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#header #user h2 {
+    display: inline;
+}
+
+#header .handle {
+    font-size: 1.4rem;
+}
+
+#header .controls {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: var(--gap-padding);
+}
+
+#header .btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    width: 100px;
+    outline-color: transparent;
+    border-color: transparent;
+    padding: 10px;
+    border-radius: 30px;
+}
+
+aside {
+    grid-row: 1 / span 2;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: var(--gap-padding);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+aside>div, ul li {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+aside>div svg {
+    height: 2.6rem;
+}
+
+aside h1 {
+    font-size: 1.5rem;
+}
+
+aside svg {
+    fill: white ;
+    height: 1.3rem;
+}
+
+ul {
+    list-style: none;
+}
+
+aside ul li, #suggestions ul li {
+    margin-bottom: 1.3rem;
+}
+
+aside>div, aside ul li:nth-child(6) {
+    margin-bottom: 50px;
+}
+
+main {
+    background-color: var(--background-color);
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    padding: var(--gap-padding);
+}
+main h3 {
+    font-size: 1.5rem;
+}
+main h4 {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+main .container #projects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-padding);
+    padding-right: var(--gap-padding);
+    padding-top: 10px;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: var(--card-shadow);
+    padding: var(--gap-padding);
+}
+
+main .container .card {
+    border-left: 10px solid var(--highlight-color);
+    height: min(250px, 350px);
+    position: relative;
+    overflow: hidden;
+}
+
+main .container .card p {
+    overflow: "hidden";
+    white-space: "nowrap";
+    text-overflow: "ellipsis";
+}
+
+main .container .reactions {
+    z-index: 1;
+    position: absolute;
+    padding: 15px;
+    bottom: 0;
+    right: 0;
+    font-size: 2.2rem;
+    display: flex;
+    gap: 5px;
+}
+
+.reactions svg {
+    height: 25px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+main #suggestions section {
+    font-size: .8rem;
+}
+
+main #suggestions hr {
+    border-color: var(--background-color);
+    margin: var(--gap-padding) 0;
+}
+
+main #suggestions ul li:last-child {
+    margin: 0;
+}
+
+main #suggestions .card {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+main #suggestions .card.trending {
+    font-size: 1rem;
+}
+.card.trending ul li p:first-child {
+    font-weight: 700;
+}
+
+/* Media queries */
+@media only screen and (max-width: 1100px) {
+    body {
+        grid-template-columns: 75px 1fr;
+    }
+    aside {
+        grid-area: 1/1/1/1;
+    }
+    aside ul, aside h1 {
+        display: none;
+    }    
+    #header {
+        height: min-content;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+    }
+
+    #user, .controls {
+        grid-column: 1/3;
+    }
+
+    #profile-name {
+        display: none;
+    }
+    main {
+        grid-area: 2/1/2/3;
+    }
+}
+@media only screen and (max-width: 1250px) {
+    main {
+        grid-template-columns: 1fr;
+        row-gap: 10px;
+    }
+    main .container #projects {
+        padding-right: 0;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    aside {
+        display: flex;
+    }
+    aside>div svg {
+        min-height: 40px;
+        min-width: 40px;
+        margin: auto;
+    }
+    aside>div {
+        margin: 0;
+    }
+    
+    main .container #projects {
+        grid-template-columns: 1fr;
+    }
+    .header_user_pill {
+        display: none;
+    }
+    #header {
+        padding: 10px;
+    }
+    #header #search {
+        margin-left: 5px;
+    }    
+}
