@@ -10,13 +10,13 @@ Project was focused on creating a basic sign-up form with simple client-side for
 - EXTRA: Project have two themes that can be toggled by clicking on the banner image.
 - EXTRA: Design is responsive.
 
+## Extra credits
+
 ## Tech stack
 
 - HTML
 - CSS
 - Javascript
-
-## Extra credits
 
 ## Live demo & version
 v1.00
