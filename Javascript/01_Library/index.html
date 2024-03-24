@@ -22,7 +22,7 @@
                     </span>
                     <span>
                         <p>Delete:</p>
-                        <button id="delete-ls" onclick="removeBookFromLibrary('clear');">X</button>
+                        <button id="delete-ls" onclick="library.removeBookFromLibrary('clear');">X</button>
                     </span>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         <section class="list">
             <div>
                 <label for="book-search"><img src="icons/search.svg" alt="search-icon"></label>
-                <input type="text" value="" id="book-search" oninput="delaySearch(event.target)">
+                <input type="text" value="" id="book-search" oninput="library.filterLibrary(event.target)">
             </div>
             <table id="books">
                 <thead>
@@ -42,7 +42,7 @@
                         <th>&nbsp;</th>
                     </tr>
                 </thead>
-                <tbody id="tbody"></tbody>
+                <tbody id="table-content"></tbody>
                 <tfoot>
                     <tr>
                         <td id="num-titles">
@@ -62,7 +62,7 @@
         <section class="overlay closed" onclick="toggleModal(event)">
             <div class="modal">
                 <button class="exit-modal" onclick="toggleModal(true)">X</button>
-                <form id="book-form" onsubmit="addBookToLibrary(event)">
+                <form id="book-form" onsubmit="library.addBookToLibrary(event)">
                     <fieldset>
                         <legend>New book</legend>
                         <span>
