@@ -15,6 +15,7 @@ This repo will serve as a document of my journey through The Odin Project curric
 
  **Javascript**
  - [x] [01_Library](Javascript/01_Library/)
+ - [x] [02_Tic-Tac-Toe](Javascript/02_Tic-Tac-Toe/)
 
  ## Roadmap
 

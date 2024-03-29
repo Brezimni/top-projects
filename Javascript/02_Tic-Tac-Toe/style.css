@@ -1,0 +1,115 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+:root {
+    --background-clr: #271118;
+    --background-cell-clr: #5FBB97;
+    --background-played-clr:  #DBD2E0;
+    --bright-text-clr: #8DDCA4;
+    --player-one-clr: darkred;
+    --player-two-clr: darkblue;
+}
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, address, big, cite, code,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas,  figure, figcaption, footer,
+header, hgroup, menu, nav, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+    background-color: var(--background-clr);
+    color: var(--bright-text-clr);
+	line-height: 1;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+ol, ul {
+	list-style: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 200px);
+    grid-template-rows: repeat(3, 200px);
+    gap: 5px;
+}
+
+.grid .cell {
+    background-color: var(--background-cell-clr);
+    border-radius: 15px;
+    display: grid;
+    place-items: center;
+    font-size: 5rem;
+}
+
+.cell:hover {
+    background-color: var(--background-played-clr);
+}
+
+.grid .cell .material-symbols-outlined {
+    font-size: 8rem;
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.cell.active {
+    background-color: var(--background-played-clr);
+}
+
+.player-one {
+    color: var(--player-one-clr);
+}
+
+.player-two {
+    color: var(--player-two-clr);
+}
+.modal {
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(222, 222, 222, .90);
+    color: black;
+    display: grid;
+    place-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 300px;
+    margin-top: -100px;
+}
+
+.modal button {
+    font-size: 2.2rem;
+    height: 200px;
+    width: 200px;
+    border-radius: 15px;
+    cursor: pointer;
+}
