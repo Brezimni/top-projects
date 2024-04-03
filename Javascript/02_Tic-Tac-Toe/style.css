@@ -113,3 +113,9 @@ ol, ul {
     border-radius: 15px;
     cursor: pointer;
 }
+
+.modal #announcement {
+    padding: 10px;
+    background-color: black;
+    color: white;
+}

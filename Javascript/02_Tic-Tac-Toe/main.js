@@ -2,11 +2,12 @@ const game = (function() {
     const gameBoard = [null,null,null,
                        null,null,null,
                        null,null,null];
-    let playerTurn = false;
+    let playerTurn = false; //false = X, true = O
     const initBoard = (function(){
         const cells = document.querySelectorAll('.cell');
         const modal = document.querySelector('.modal');
-        return { cells, modal }
+        const announcement = document.getElementById('announcement');
+        return { cells, modal, announcement }
     })();
     let controller;
     function activateButtons() {        
@@ -30,6 +31,8 @@ const game = (function() {
             for(let combo of winningCombinations) {
                 if(gameBoard[combo[0]] === lastPlay && gameBoard[combo[1]] === lastPlay && gameBoard[combo[2]] === lastPlay || !gameBoard.includes(null)) {
                     controller.abort();
+                    const result = !gameBoard.includes(null) ? "It's a draw!" : lastPlay === "X" ? 'Player 1 won.' : 'Player 2 won.';
+                    initBoard.announcement.textContent = result;
                     initBoard.modal.classList.remove('hidden');
                     break;
                 } else {continue;}
