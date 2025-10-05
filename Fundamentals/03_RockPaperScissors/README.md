@@ -3,7 +3,7 @@
 ## Basic functionality
 Game is played against the computer that returns a random choice.
 - [x] Function *getComputerChoice* randomly returns “rock”, “paper” or “scissors” using *Math.random*.
-- [x] A simple interface enables user to pick from one of the three options by prompting function *getHumanChoice*.
+- [x] A simple interface enables user to pick from one of the three options.
 - [x] The app keeps scores in *humanScore* and *computerScore* variables.
 - [x] Function *playRound* compares return values of *getComputerChoice* and *getHumanChoice* and updates the score.
 - [x] A screen informs the user what were the choices and who won the round. 
