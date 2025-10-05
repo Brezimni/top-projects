@@ -1,3 +1,6 @@
 [submodule "top-projects"]
 	path = top-projects
 	url = https://github.com/Brezimni/top-projects/
+[submodule "Fundamentals/01_Recipes"]
+  path = Fundamentals/01_Recipes
+  url = https://github.com/Brezimni/top-projects/Fundamentals/01_Recipes
