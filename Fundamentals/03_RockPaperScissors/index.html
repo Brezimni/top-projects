@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TOP Project: Rock Paper Scissors</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/matifandy8/NeoBrutalismCSS/dist/index.min.css" />
     <style>
         body {
             height: 100vh;
@@ -13,19 +14,19 @@
             color: #000000;
         }
         #container {
-            background-color: #F57D1F;
-            padding: 20px;
-            border-radius: 8px;
-        }
-        #display {
-            background-color: #F72798;
-            height: 220px;
-            width: 450px;
-            padding: 20px;
+            background-color: #0077b6;
+            padding: 0 10px 20px 10px;
+            box-shadow: 7px 7px 0 #000;
+            width: 500px;
         }
         #score-board {
             display: flex;
             justify-content: space-around;
+        }
+        #display {
+            padding: 10px;
+            color: #000;
+            background-color: #33ff57;
         }
         .score {
             outline: none;
@@ -42,13 +43,8 @@
             align-items: center;
             margin-top: 15px;
         }
-        #buttons button{
-            background-color: #EBF400;
-            outline-color: transparent;
-            padding: 8px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
+        .nb-button.default {
+            background-color: #33ff57;
         }
         #multiplier {  
             background-color: #EBF400;
@@ -70,9 +66,9 @@
     </style>
 </head>
 <body>
-    <div id="container">
-        <h1 id="title">
-            Rock-Paper-Scissors
+    <div id="container" class="nb-marquee blue">
+        <h1 class= "nb-marquee-content">
+            Rock ¤ Paper ¤ Scissors
         </h1>
         <div id="display">
             <div id="score-board">
@@ -98,18 +94,15 @@
         </div>
         <div id="controls">
             <div id="buttons">
-                <button value="rock" type="button" onclick="multiply(event.target.value)">
+                <button class="nb-button default" value="rock" type="button" onclick="playRound(event.target.value)">
                     Rock    
                 </button>
-                <button value="paper" type="button" onclick="multiply(event.target.value)">
+                <button class="nb-button default" value="paper" type="button" onclick="playRound(event.target.value)">
                     Paper
                 </button>
-                <button value="scissors" type="button" onclick="multiply(event.target.value)">
+                <button class="nb-button default" value="scissors" type="button" onclick="playRound(event.target.value)">
                     Scissors
                 </button>
-            </div>
-            <div>
-                <input type="number" value="1" name="multiplier" id="multiplier" min="1" max="5">
             </div>
         </div>
     </div>
@@ -154,7 +147,7 @@
         }
     }
 
-    function multiply(choice) {
+    function playGame(choice) {
         const gameMultiplier = document.getElementById('multiplier');
         if(parseInt(gameMultiplier.value) > 5 || parseInt(gameMultiplier.value) < 1 || typeof parseInt(gameMultiplier.value) !== 'number') {parseInt(gameMultiplier.value) = 1}
         for(let i = 0; i < parseInt(gameMultiplier.value); i++) {
