@@ -4,7 +4,7 @@
 
 ## Basic functionality
 
-I tryied to replicate dashboard from [project goal](assets/project-goal.png) and practice grid layout.
+I've tried to replicate a dashboard from [project goal](assets/project-goal.png) and practice grid layout.
 - [x] Use grid when applicable.
 - [x] Try to match the initial design as best as possible.
 
