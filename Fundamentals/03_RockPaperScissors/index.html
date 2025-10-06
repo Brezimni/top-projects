@@ -13,6 +13,11 @@
             font-family: 'Courier New', Courier, monospace;
             color: #000000;
         }
+        .nb-dialog {
+            position: absolute;
+            z-index: 100;
+            display: none;
+        }
         #container {
             background-color: #0077b6;
             padding: 0 10px 20px 10px;
@@ -66,6 +71,13 @@
     </style>
 </head>
 <body>
+    <div class="nb-dialog">
+        <div class="nb-dialog-header">Wanna play again?</div>
+        <div class="nb-dialog-footer">
+            <button class="nb-button green" id="start" onclick="toggleModal();resetGame()">PLAY</button>
+            <button class="nb-button orange" id="end" onclick="toggleModal()">END</button>
+        </div>
+    </div>           
     <div id="container" class="nb-marquee blue">
         <h1 class= "nb-marquee-content">
             Rock ¤ Paper ¤ Scissors
@@ -139,7 +151,7 @@
             } else { changeScore(1); announceResult(1, 'Paper beats rock!'); }
         }
         const gameLog = document.getElementById('game-log');
-        if(gameLog.childElementCount == 5) {endGame(document.getElementById('game-result'), gameLog)};
+        if(gameLog.childElementCount == 5) {toggleModal()};
     }
 
     const announceResult = function(result, explanation) {
@@ -153,11 +165,28 @@
         gameLog.appendChild(newLi);
     }
 
-    function endGame(announcement, log) {
-        console.log("Game over")
-        confirm("Do you want to play again?")
-        announcement.innerText = "Let's play again!"
-        //log.innerHTML = ""
+    function toggleModal() {
+        modal = document.querySelector(".nb-dialog");
+        buttons = document.getElementById("buttons");
+        const isHidden = window.getComputedStyle(modal).display === 'none';
+
+        if (isHidden) {
+            modal.style.display = 'block'; // or 'flex', depending on layout
+            for(let i = 0;i < 3;i++) {
+                buttons.children[i].setAttribute("disabled", true)
+            }
+        } else {
+            modal.style.display = 'none';
+        }
+    }
+    
+    function resetGame() {
+        document.getElementById('game-result').innerText = "Let's play again!";
+        document.getElementById('game-log').innerHTML = "";
+        buttons = document.getElementById("buttons");
+        for(let i = 0;i < 3;i++) {
+            buttons.children[i].removeAttribute("disabled");
+        }
         changeScore("clear")
     }
 </script>
