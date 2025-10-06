@@ -114,7 +114,32 @@
 
     const changeScore = function(result) {
         const scoreCount = [document.getElementById('win'), document.getElementById('loss'), document.getElementById('draw')];
-        return scoreCount[result].value = parseInt(scoreCount[result].value) + 1;
+        if(result == "clear") {
+            for(let i = 0;i < 3; i++) {
+                scoreCount[i].value = 0
+            }
+        } else {
+        scoreCount[result].value = parseInt(scoreCount[result].value) + 1;
+    }}
+
+    function playRound(playerChoice) {
+        const computerChoice = getComputerChoice();
+        if (playerChoice === computerChoice) { changeScore(2); announceResult(2, `Both players picked ${playerChoice}!`);
+        } else if(playerChoice === 'rock') {
+            if(computerChoice === 'scissors') {
+                changeScore(0); announceResult(0, 'Rock beats scissors!');
+            } else {changeScore(1); announceResult(1, 'Paper beats rock!'); }
+        } else if(playerChoice === 'paper') {
+            if(computerChoice === 'rock') {
+                changeScore(0); announceResult(0, 'Paper beats rock!');
+            } else { changeScore(1); announceResult(1, 'Scissors beat paper!'); }
+        } else {
+            if(computerChoice === 'paper') {
+                changeScore(0); announceResult(0, 'Scissors beat paper!'); 
+            } else { changeScore(1); announceResult(1, 'Paper beats rock!'); }
+        }
+        const gameLog = document.getElementById('game-log');
+        if(gameLog.childElementCount == 5) {endGame(document.getElementById('game-result'), gameLog)};
     }
 
     const announceResult = function(result, explanation) {
@@ -123,36 +148,17 @@
         const gameLog = document.getElementById('game-log');
 
         announcement.innerText = results[result];
-        if(gameLog.childElementCount >= 5) {gameLog.children[0].remove()};
         const newLi = document.createElement('li');
         newLi.textContent = explanation;
         gameLog.appendChild(newLi);
     }
 
-    function playRound(playerChoice) {
-        const computerChoice = getComputerChoice();
-        if (playerChoice === computerChoice) { announceResult(2, `Both players picked ${playerChoice}!`); changeScore(2);
-        } else if(playerChoice === 'rock') {
-            if(computerChoice === 'scissors') {
-                announceResult(0, 'Rock beats scissors!'); changeScore(0);
-            } else {announceResult(1, 'Paper beats rock!'); changeScore(1);}
-        } else if(playerChoice === 'paper') {
-            if(computerChoice === 'rock') {
-                announceResult(0, 'Paper beats rock!'); changeScore(0);
-            } else {announceResult(1, 'Scissors beat paper!'); changeScore(1);}
-        } else {
-            if(computerChoice === 'paper') {
-                announceResult(0, 'Scissors beat paper!'); changeScore(0);
-            } else {announceResult(1, 'Paper beats rock!'); changeScore(1);}
-        }
-    }
-
-    function playGame(choice) {
-        const gameMultiplier = document.getElementById('multiplier');
-        if(parseInt(gameMultiplier.value) > 5 || parseInt(gameMultiplier.value) < 1 || typeof parseInt(gameMultiplier.value) !== 'number') {parseInt(gameMultiplier.value) = 1}
-        for(let i = 0; i < parseInt(gameMultiplier.value); i++) {
-            playRound(choice);
-        }
+    function endGame(announcement, log) {
+        console.log("Game over")
+        confirm("Do you want to play again?")
+        announcement.innerText = "Let's play again!"
+        //log.innerHTML = ""
+        changeScore("clear")
     }
 </script>
 </body>

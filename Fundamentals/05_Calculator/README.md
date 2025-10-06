@@ -26,5 +26,6 @@ I've created a simple calculator with following functions triggered by pressing 
 - [] Add keyboard support.
 
 ## Live demo & version
-v1.00
-No demo currently.
+
+v1.02
+[Live demo](https://fnd05-calculator.netlify.app/)
