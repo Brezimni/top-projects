@@ -22,7 +22,7 @@
                     </span>
                     <span>
                         <p>Delete:</p>
-                        <button id="delete-ls" onclick="library.removeBookFromLibrary('clear');">X</button>
+                        <button id="delete-ls" onclick="manage.removeBook('clear');">X</button>
                     </span>
                 </div>
             </div>
@@ -31,7 +31,7 @@
         <section class="list">
             <div>
                 <label for="book-search"><img src="icons/search.svg" alt="search-icon"></label>
-                <input type="text" value="" id="book-search" oninput="library.filterLibrary(event.target)">
+                <input type="text" value="" id="book-search" oninput="manage.queryTable(event.target)">
             </div>
             <table id="books">
                 <thead>
@@ -62,7 +62,7 @@
         <section class="overlay closed" onclick="toggleModal(event)">
             <div class="modal">
                 <button class="exit-modal" onclick="toggleModal(true)">X</button>
-                <form id="book-form" onsubmit="library.addBookToLibrary(event)">
+                <form id="book-form" onsubmit="manage.addBook(event)">
                     <fieldset>
                         <legend>New book</legend>
                         <span>

@@ -15,6 +15,7 @@ The goal was to creat a simple library app.
 - [ ] The table can be sorted by pressing column header tag.
 - [x] The table has a search bar that allows user to filter the contents.
 - [ ] Add a button that allows user to edit individual entries.
+- [x] Rework using JS Classes (/node-path-javascript-classes)
 
 ## Tech stack
 
@@ -22,7 +23,6 @@ The goal was to creat a simple library app.
 - CSS
 - Javascript
 
-
 ## Live demo & version
-v1.00
+v1.10
 No demo currently.
