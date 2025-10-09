@@ -74,8 +74,8 @@
     <div class="nb-dialog">
         <div class="nb-dialog-header">Wanna play again?</div>
         <div class="nb-dialog-footer">
-            <button class="nb-button green" id="start" onclick="toggleModal();resetGame()">PLAY</button>
-            <button class="nb-button orange" id="end" onclick="toggleModal()">END</button>
+            <button class="nb-button green" id="start">PLAY</button>
+            <button class="nb-button orange" id="end">END</button>
         </div>
     </div>           
     <div id="container" class="nb-marquee blue">
@@ -106,13 +106,13 @@
         </div>
         <div id="controls">
             <div id="buttons">
-                <button class="nb-button default" value="rock" type="button" onclick="playRound(event.target.value)">
+                <button class="nb-button default" value="rock" type="button">
                     Rock    
                 </button>
-                <button class="nb-button default" value="paper" type="button" onclick="playRound(event.target.value)">
+                <button class="nb-button default" value="paper" type="button">
                     Paper
                 </button>
-                <button class="nb-button default" value="scissors" type="button" onclick="playRound(event.target.value)">
+                <button class="nb-button default" value="scissors" type="button">
                     Scissors
                 </button>
             </div>
@@ -120,75 +120,110 @@
     </div>
 
 <script>
-    const getComputerChoice = function() {
-        return ['rock', 'paper', 'scissors'][Math.floor(Math.random()*3)]
-    }
-
-    const changeScore = function(result) {
-        const scoreCount = [document.getElementById('win'), document.getElementById('loss'), document.getElementById('draw')];
-        if(result == "clear") {
-            for(let i = 0;i < 3; i++) {
-                scoreCount[i].value = 0
+    class Game {
+        constructor() {
+            this.wins = 0;
+            this.losses = 0;
+            this.draws = 0;
+        }
+        get score() {
+            return [this.wins, this.losses, this.draws];
+        }
+        getComputerChoice() {
+            return ['rock', 'paper', 'scissors'][Math.floor(Math.random()*3)]
+        }
+        playRound(playerChoice) {
+            const computerChoice = this.getComputerChoice();
+            if (playerChoice === computerChoice) {
+                this.draws++;
+                return {announcement: "It's a draw!", result: `R${this.wins+this.losses+this.draws}: Both players picked ${playerChoice}!`};
+            } else if(
+                (playerChoice == 'rock' && computerChoice == 'scissors') 
+                || (playerChoice == 'paper' && computerChoice == 'rock')
+                || (playerChoice == 'scissors' && computerChoice == 'paper')) {
+                    this.wins++;
+                    return {announcement: "You win!", result: `R${this.wins+this.losses+this.draws}: Player(${playerChoice}) - Computer(${computerChoice})`}
+            } else if(
+                (playerChoice == 'scissors' && computerChoice == 'rock') 
+                || (playerChoice == 'rock' && computerChoice == 'paper')
+                || (playerChoice == 'paper' && computerChoice == 'scissors')) {
+                    this.losses++;
+                    return {announcement: "You lose!", result: `R${this.wins+this.losses+this.draws}: Player(${playerChoice}) - Computer(${computerChoice})`}
             }
-        } else {
-        scoreCount[result].value = parseInt(scoreCount[result].value) + 1;
-    }}
-
-    function playRound(playerChoice) {
-        const computerChoice = getComputerChoice();
-        if (playerChoice === computerChoice) { changeScore(2); announceResult(2, `Both players picked ${playerChoice}!`);
-        } else if(playerChoice === 'rock') {
-            if(computerChoice === 'scissors') {
-                changeScore(0); announceResult(0, 'Rock beats scissors!');
-            } else {changeScore(1); announceResult(1, 'Paper beats rock!'); }
-        } else if(playerChoice === 'paper') {
-            if(computerChoice === 'rock') {
-                changeScore(0); announceResult(0, 'Paper beats rock!');
-            } else { changeScore(1); announceResult(1, 'Scissors beat paper!'); }
-        } else {
-            if(computerChoice === 'paper') {
-                changeScore(0); announceResult(0, 'Scissors beat paper!'); 
-            } else { changeScore(1); announceResult(1, 'Paper beats rock!'); }
         }
-        const gameLog = document.getElementById('game-log');
-        if(gameLog.childElementCount == 5) {toggleModal()};
     }
-
-    const announceResult = function(result, explanation) {
-        const results = ['You win!', 'You lose!', "It's a draw!"];
-        const announcement = document.getElementById('game-result');
-        const gameLog = document.getElementById('game-log');
-
-        announcement.innerText = results[result];
-        const newLi = document.createElement('li');
-        newLi.textContent = explanation;
-        gameLog.appendChild(newLi);
-    }
-
-    function toggleModal() {
-        modal = document.querySelector(".nb-dialog");
-        buttons = document.getElementById("buttons");
-        const isHidden = window.getComputedStyle(modal).display === 'none';
-
-        if (isHidden) {
-            modal.style.display = 'block'; // or 'flex', depending on layout
-            for(let i = 0;i < 3;i++) {
-                buttons.children[i].setAttribute("disabled", true)
+    class UIcontrols {
+        #buttons; #gameScore; #gameResult; #gameLog; #modal;
+        constructor(playRound, resetGame) {
+            this.#buttons = document.querySelectorAll("#buttons .nb-button")
+            this.#gameScore = document.querySelectorAll(".score")
+            this.#gameResult = document.getElementById("game-result");
+            this.#gameLog = document.getElementById("game-log");
+            this.#modal = document.querySelector(".nb-dialog");
+            this.#buttons.forEach((button) => {
+                button.addEventListener("click", () => {playRound(button.value)})
+            })
+        }
+        updateScore(results) {
+            for(let i = 0; i < 3; i++) {
+                this.#gameScore[i].value = results[i]
             }
-        } else {
-            modal.style.display = 'none';
+        }
+        announceResult({announcement, result}) {
+            this.#gameResult.innerText = announcement;
+            const newItem = document.createElement('li');
+            newItem.textContent = result;
+            this.#gameLog.appendChild(newItem);
+            console.log(this.#gameLog)
+            if (this.#gameLog.children.length > 5) {
+                this.#gameLog.firstElementChild.remove();
+            }
+        }
+        reset() {
+            this.updateScore([0,0,0]);
+            this.#gameResult.innerText = "Let's play again!";
+            this.#gameLog.innerHTML = "";
+        }
+        toggleModal(enable) {
+            const isHidden = window.getComputedStyle(this.#modal).display === 'none';
+            if (isHidden) {
+            this.#modal.style.display = 'block';
+            for(let button of this.#buttons) {
+                button.setAttribute("disabled", true)
+            }
+            } else {
+            if(this.#buttons[0].hasAttribute('disabled') && enable) {
+                for(let button of this.#buttons) {
+                    button.removeAttribute("disabled")
+                }
+            }
+            this.#modal.style.display = 'none';
+            }
         }
     }
-    
-    function resetGame() {
-        document.getElementById('game-result').innerText = "Let's play again!";
-        document.getElementById('game-log').innerHTML = "";
-        buttons = document.getElementById("buttons");
-        for(let i = 0;i < 3;i++) {
-            buttons.children[i].removeAttribute("disabled");
+    (function startGame() {
+        let game = new Game();
+
+        function playAndUpdate(playerChoice, resetGame) {
+            const result = game.playRound(playerChoice);
+            controls.updateScore(game.score);
+            controls.announceResult(result);
+            if (game.score[0] == 5 || game.score[1] == 5){
+                controls.toggleModal();
+            }
         }
-        changeScore("clear")
-    }
+
+        const controls = new UIcontrols(playAndUpdate);
+
+        function restartGame() {
+            game = new Game();
+            controls.reset();
+            controls.toggleModal(true)
+        }
+        const start = document.getElementById("start");
+        const end = document.getElementById("end");
+        start.addEventListener("click", restartGame); end.addEventListener("click", () => controls.toggleModal(false));
+    })()
 </script>
 </body>
 </html>
