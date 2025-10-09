@@ -13,6 +13,8 @@ Game is played against the computer that returns a random choice.
 
 ## Extra credits
 
+- [x] Improved UI by using buttons instead of prompts.
+
 ## Tech stack
 
 - HTML
@@ -21,5 +23,5 @@ Game is played against the computer that returns a random choice.
 
 ## Live demo & version
 
-v1.10
+v1.11
 No demo currently.
