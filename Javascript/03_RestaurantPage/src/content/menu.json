@@ -1,0 +1,65 @@
+{
+    "title": {
+        "type": "h2",
+        "text": "Our menu"
+    },
+    "container": {
+        "type": "div",
+        "classes": ["menu"],
+        "menu_item1": {
+            "type": "section",
+            "image": {
+                "type": "img",
+                "path": "./assets/menu_item1.jpg"
+            },
+            "figcaption": {
+                "type": "figcaption",
+                "text": "This is our first meal option."
+            }
+        },
+        "menu_item2": {
+            "type": "section",
+            "image": {
+                "type": "img",
+                "path": "./assets/menu_item2.jpg"
+            },
+            "figcaption": {
+                "type": "figcaption",
+                "text": "This is our second meal option."
+            }
+        },
+        "menu_item3": {
+            "type": "section",
+                "image": {
+                    "type": "img",
+                    "path": "./assets/menu_item3.jpg"
+                },
+                "figcaption": {
+                    "type": "figcaption",
+                    "text": "This is our third meal option."
+                }
+        },
+        "menu_item4": {
+            "type": "section",
+            "image": {
+                "type": "img",
+                "path": "./assets/menu_item4.jpg"
+            },
+            "figcaption": {
+                "type": "figcaption",
+                "text": "This is our fourth meal option."
+            }
+        },
+        "menu_item5": {
+            "type": "section",
+            "image": {
+                "type": "img",
+                "path": "./assets/menu_item5.jpg"
+            },
+            "figcaption": {
+                "type": "figcaption",
+                "text": "This is our desert."
+            }
+        }
+    }
+}

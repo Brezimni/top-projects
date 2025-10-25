@@ -1,0 +1,14 @@
+{
+    "title": {
+        "type": "h2",
+        "text": "Book a table!"
+    },
+    "input": {
+        "type": "input",
+        "value": "Type something"
+    },
+    "button": {
+        "type": "button",
+        "text": "Send"
+    }
+}

@@ -1,0 +1,10 @@
+{
+"title":
+    {"type": "h2",
+    "text": "About us"
+    },
+"content":
+    {"type": "p",
+    "text": "We're this an that and a lot of other things as well."    
+    }
+}

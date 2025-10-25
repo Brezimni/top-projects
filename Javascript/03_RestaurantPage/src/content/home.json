@@ -1,0 +1,10 @@
+{
+    "title":
+        {"type": "h2",
+        "text": "Welcome to the Hungry GOAT."
+        },
+    "content":
+        {"type": "p",
+        "text": "Whatever you choose you won't regret it."    
+        }
+    }
