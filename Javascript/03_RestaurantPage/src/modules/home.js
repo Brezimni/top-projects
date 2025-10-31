@@ -6,4 +6,7 @@ export default class Home extends Inserter {
         super();
         this.addElement(this.processData(content));
     }
+    renderSelf() {
+        this.addElement(this.processData(content));
+    }
 }

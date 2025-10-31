@@ -1,10 +1,10 @@
 {
     "title":
-        {"type": "h2",
+        {"tag": "h2",
         "text": "Welcome to the Hungry GOAT."
         },
     "content":
-        {"type": "p",
-        "text": "Whatever you choose you won't regret it."    
+        {"tag": "p",
+        "text": "A cozy family restaurant where every meal feels like home. We serve hearty, homemade dishes made with love and fresh, local ingredients. Whether you’re here for Sunday brunch or a comforting dinner, you’ll always find warm smiles, generous portions, and a place where everyone’s part of the family."    
         }
     }

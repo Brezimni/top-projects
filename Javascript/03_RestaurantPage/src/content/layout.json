@@ -1,0 +1,85 @@
+{
+    "wrapper": {
+        "tag": "main",
+        "display-area": {
+            "tag": "div",
+            "classes": ["center"]
+        },
+        "banner": {
+            "tag": "div",
+            "classes": ["banner"],
+            "logo": {
+                "tag": "img",
+                "path": "./assets/logo.svg",
+                "alt": "logo",
+                "classes": ["logo-mask"]
+            },
+            "restaurant-name": {
+                "tag": "h1",
+                "text": "Hungry GOAT Restaurant"
+            }
+        }
+    },
+    "navigation": {
+        "tag": "nav",
+        "ordered-list": {
+            "tag": "ol",
+            "list-item1": {
+                "tag": "li",
+                "classes": ["btn"],
+                "role": "button",
+                "arrow-decoration": {
+                    "tag": "span",
+                    "classes": ["shift"],
+                    "text": "‹"
+                },
+                "description": {
+                    "tag": "span",
+                    "text": "Home"
+                }
+            },
+            "list-item2": {
+                "tag": "li",
+                "classes": ["btn"],
+                "role": "button",
+                "arrow-decoration": {
+                    "tag": "span",
+                    "classes": ["shift"],
+                    "text": "‹"
+                },
+                "description": {
+                    "tag": "span",
+                    "text": "Menu"
+                }
+            },
+            "list-item3": {
+                "tag": "li",
+                "classes": ["btn"],
+                "role": "button",
+                "arrow-decoration": {
+                    "tag": "span",
+                    "classes": ["shift"],
+                    "text": "‹"
+                },
+                "description": {
+                    "tag": "span",
+                    "text": "About"
+                }
+            },
+            "list-item4": {
+                "tag": "li",
+                "classes": ["btn", "highlight"],
+                "role": "button",
+                "arrow-decoration": {
+                    "tag": "span",
+                    "classes": ["shift"],
+                    "text": "‹"
+                },
+                "description": {
+                    "tag": "span",
+                    "text": "Reservation"
+                }
+            }
+        }
+    }
+}

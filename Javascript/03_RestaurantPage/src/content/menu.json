@@ -1,64 +1,64 @@
 {
     "title": {
-        "type": "h2",
+        "tag": "h2",
         "text": "Our menu"
     },
     "container": {
-        "type": "div",
+        "tag": "div",
         "classes": ["menu"],
         "menu_item1": {
-            "type": "section",
+            "tag": "section",
             "image": {
-                "type": "img",
-                "path": "./assets/menu_item1.jpg"
+                "tag": "img",
+                "path": "https://placehold.co/150x150/888888/000000.jpg"
             },
             "figcaption": {
-                "type": "figcaption",
+                "tag": "figcaption",
                 "text": "This is our first meal option."
             }
         },
         "menu_item2": {
-            "type": "section",
+            "tag": "section",
             "image": {
-                "type": "img",
-                "path": "./assets/menu_item2.jpg"
+                "tag": "img",
+                "path": "https://placehold.co/150x150/888888/000000.jpg"
             },
             "figcaption": {
-                "type": "figcaption",
+                "tag": "figcaption",
                 "text": "This is our second meal option."
             }
         },
         "menu_item3": {
-            "type": "section",
+            "tag": "section",
                 "image": {
-                    "type": "img",
-                    "path": "./assets/menu_item3.jpg"
+                    "tag": "img",
+                    "path": "https://placehold.co/150x150/888888/000000.jpg"
                 },
                 "figcaption": {
-                    "type": "figcaption",
+                    "tag": "figcaption",
                     "text": "This is our third meal option."
                 }
         },
         "menu_item4": {
-            "type": "section",
+            "tag": "section",
             "image": {
-                "type": "img",
-                "path": "./assets/menu_item4.jpg"
+                "tag": "img",
+                "path": "https://placehold.co/150x150/888888/000000.jpg"
             },
             "figcaption": {
-                "type": "figcaption",
+                "tag": "figcaption",
                 "text": "This is our fourth meal option."
             }
         },
         "menu_item5": {
-            "type": "section",
+            "tag": "section",
             "image": {
-                "type": "img",
-                "path": "./assets/menu_item5.jpg"
+                "tag": "img",
+                "path": "https://placehold.co/150x150/888888/000000.jpg"
             },
             "figcaption": {
-                "type": "figcaption",
-                "text": "This is our desert."
+                "tag": "figcaption",
+                "text": "This is our dessert."
             }
         }
     }
